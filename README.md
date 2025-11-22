@@ -67,10 +67,10 @@ Dataset file stored in:
 ✔ Step 4: Medallion Folder Structure
 ✔ Step 5: Upload Raw Data
 ✔ Step 6: Create Azure Synapse Workspace
-⬜ Step 7: Linked Service (ADLS → Synapse)
-⬜ Step 8: Bronze Transformation
-⬜ Step 9: Silver Fact & Dimensions
-⬜ Step 10: Gold Layer KPIs
+✔ Step 7: Linked Service (ADLS → Synapse)
+✔ Step 8: Bronze Transformation
+✔ Step 9: Silver Fact & Dimensions
+✔ Step 10: Gold Layer KPIs
 ⬜ Step 11: Power BI Dashboard Development
 ⬜ Step 12: Architecture Diagram
 
