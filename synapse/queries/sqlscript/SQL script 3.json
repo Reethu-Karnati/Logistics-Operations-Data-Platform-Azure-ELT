@@ -1,0 +1,20 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"folder": {
+			"name": "00_setup_database_and_datasource.sql"
+		},
+		"content": {
+			"query": "-- CSV file format for raw data\nCREATE EXTERNAL FILE FORMAT csv_format\nWITH (\n    FORMAT_TYPE = DELIMITEDTEXT,\n    FORMAT_OPTIONS (\n        FIELD_TERMINATOR = ',',\n        STRING_DELIMITER = '\"',\n        FIRST_ROW = 2\n    )\n);\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "logistics_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

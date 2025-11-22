@@ -1,0 +1,20 @@
+{
+	"name": "SQL script 18",
+	"properties": {
+		"folder": {
+			"name": "07_dim_delay_reason.sql"
+		},
+		"content": {
+			"query": "-- Test\nSELECT * FROM dim_delay_reason ORDER BY delay_reason_key;\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "logistics_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

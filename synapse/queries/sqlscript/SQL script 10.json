@@ -1,0 +1,20 @@
+{
+	"name": "SQL script 10",
+	"properties": {
+		"folder": {
+			"name": "03_dim_date.sql"
+		},
+		"content": {
+			"query": "-- Test\nSELECT TOP 50 * FROM dim_date ORDER BY [date];\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "logistics_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

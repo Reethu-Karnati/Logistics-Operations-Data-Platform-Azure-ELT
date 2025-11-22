@@ -1,0 +1,20 @@
+{
+	"name": "SQL script 13",
+	"properties": {
+		"folder": {
+			"name": "05_dim_shipment_status.sql"
+		},
+		"content": {
+			"query": "CREATE EXTERNAL TABLE dim_shipment_status\nWITH (\n    LOCATION    = 'silver/dim_shipment_status/',\n    DATA_SOURCE = ds_logistics_datalake,\n    FILE_FORMAT = parquet_format\n)\nAS\nSELECT\n    ROW_NUMBER() OVER (ORDER BY Shipment_Status) AS shipment_status_key,\n    Shipment_Status                              AS shipment_status_name\nFROM (\n    SELECT DISTINCT Shipment_Status\n    FROM bronze_logistics\n    WHERE Shipment_Status IS NOT NULL\n) AS s;\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "logistics_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

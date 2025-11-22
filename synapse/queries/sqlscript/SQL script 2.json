@@ -1,0 +1,20 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"folder": {
+			"name": "00_setup_database_and_datasource.sql"
+		},
+		"content": {
+			"query": "-- External data source pointing to your ADLS Gen2 container\nCREATE EXTERNAL DATA SOURCE ds_logistics_datalake\nWITH (\n    LOCATION = 'https://stlogisticsdatalake.dfs.core.windows.net/logistics-data'\n);\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "logistics_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
