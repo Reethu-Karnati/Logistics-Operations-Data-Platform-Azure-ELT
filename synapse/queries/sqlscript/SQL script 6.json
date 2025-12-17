@@ -1,0 +1,20 @@
+{
+	"name": "SQL script 6",
+	"properties": {
+		"folder": {
+			"name": "01_raw_external_table.sql"
+		},
+		"content": {
+			"query": "-- Test\nSELECT TOP 50 * FROM ext_raw_logistics;\nGO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "logistics_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

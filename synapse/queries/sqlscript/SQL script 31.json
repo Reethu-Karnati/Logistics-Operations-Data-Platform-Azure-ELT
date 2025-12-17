@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 31",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP 10 *\nFROM v_asset_revenue_risk\nORDER BY total_revenue DESC, delay_rate DESC;\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "logistics_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

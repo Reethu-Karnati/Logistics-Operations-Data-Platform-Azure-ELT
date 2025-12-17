@@ -1,0 +1,17 @@
+{
+	"name": "04_dim_asset",
+	"properties": {
+		"content": {
+			"query": "CREATE EXTERNAL TABLE dim_asset\nWITH (\n    LOCATION    = 'silver/dim_asset/',\n    DATA_SOURCE = ds_logistics_datalake,\n    FILE_FORMAT = parquet_format\n)\nAS\nSELECT\n    ROW_NUMBER() OVER (ORDER BY Asset_ID) AS asset_key,\n    Asset_ID                              AS asset_id\nFROM (\n    SELECT DISTINCT Asset_ID\n    FROM bronze_logistics\n    WHERE Asset_ID IS NOT NULL\n) AS a;\nGO\n\n-- Test\nSELECT * FROM dim_asset ORDER BY asset_key;\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "08_fact_logistics_events",
+	"properties": {
+		"content": {
+			"query": "CREATE EXTERNAL TABLE fact_logistics_events\nWITH (\n    LOCATION    = 'silver/fact_logistics_events/',\n    DATA_SOURCE = ds_logistics_datalake,\n    FILE_FORMAT = parquet_format\n)\nAS\nSELECT\n    ROW_NUMBER() OVER (\n        ORDER BY b.Event_Timestamp, b.Asset_ID\n    )                                       AS event_id,\n\n    d.date_key,\n    a.asset_key,\n    s.shipment_status_key,\n    t.traffic_status_key,\n    r.delay_reason_key,\n\n    b.Event_Timestamp,\n    b.Latitude,\n    b.Longitude,\n    b.Inventory_Level,\n    b.Temperature,\n    b.Humidity,\n    b.Waiting_Time,\n    b.User_Transaction_Amount,\n    b.User_Purchase_Frequency,\n    b.Asset_Utilization,\n    b.Demand_Forecast,\n    b.Logistics_Delay\nFROM bronze_logistics b\nLEFT JOIN dim_date d\n    ON CAST(b.Event_Timestamp AS DATE) = d.[date]\nLEFT JOIN dim_asset a\n    ON b.Asset_ID = a.asset_id\nLEFT JOIN dim_shipment_status s\n    ON b.Shipment_Status = s.shipment_status_name\nLEFT JOIN dim_traffic_status t\n    ON b.Traffic_Status = t.traffic_status_name\nLEFT JOIN dim_delay_reason r\n    ON b.Logistics_Delay_Reason = r.delay_reason_name;\nGO\n\n--Test \nSELECT TOP 50 * FROM fact_logistics_events;\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

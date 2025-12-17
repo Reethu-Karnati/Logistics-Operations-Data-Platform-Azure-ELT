@@ -1,0 +1,20 @@
+{
+	"name": "SQL script 7",
+	"properties": {
+		"folder": {
+			"name": "02_bronze_logistics_parquet.sql"
+		},
+		"content": {
+			"query": "\nCREATE EXTERNAL TABLE bronze_logistics\nWITH (\n    LOCATION    = 'bronze/logistics_events/',\n    DATA_SOURCE = ds_logistics_datalake,\n    FILE_FORMAT = parquet_format\n)\nAS\nSELECT\n    TRY_CONVERT(datetime2, Timestamp)            AS Event_Timestamp,\n    Asset_ID,\n    Latitude,\n    Longitude,\n    Inventory_Level,\n    Shipment_Status,\n    Temperature,\n    Humidity,\n    Traffic_Status,\n    Waiting_Time,\n    User_Transaction_Amount,\n    User_Purchase_Frequency,\n    Logistics_Delay_Reason,\n    Asset_Utilization,\n    Demand_Forecast,\n    CAST(Logistics_Delay AS bit)                 AS Logistics_Delay\nFROM ext_raw_logistics;\nGO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "logistics_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

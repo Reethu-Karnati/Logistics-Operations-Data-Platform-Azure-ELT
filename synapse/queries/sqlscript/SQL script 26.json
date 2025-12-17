@@ -1,0 +1,20 @@
+{
+	"name": "SQL script 26",
+	"properties": {
+		"folder": {
+			"name": "11_view_v_asset_performance.sql"
+		},
+		"content": {
+			"query": "-- Test\nSELECT * FROM v_asset_performance ORDER BY delay_rate DESC;\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

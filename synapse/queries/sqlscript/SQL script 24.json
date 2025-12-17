@@ -1,0 +1,20 @@
+{
+	"name": "SQL script 24",
+	"properties": {
+		"folder": {
+			"name": "10_view_v_delay_by_traffic_reason.sql"
+		},
+		"content": {
+			"query": "-- Test\nSELECT * FROM v_delay_by_traffic_reason\nORDER BY traffic_status_name, delay_reason_name;\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "logistics_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

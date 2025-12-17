@@ -1,0 +1,17 @@
+{
+	"name": "00_setup_database_and_datasource_2",
+	"properties": {
+		"content": {
+			"query": "-- External data source pointing to your ADLS Gen2 container\nCREATE EXTERNAL DATA SOURCE ds_logistics_datalake\nWITH (\n    LOCATION = 'https://stlogisticsdatalake.dfs.core.windows.net/logistics-data'\n);\nGO\n\n-- CSV file format for raw data\nCREATE EXTERNAL FILE FORMAT csv_format\nWITH (\n    FORMAT_TYPE = DELIMITEDTEXT,\n    FORMAT_OPTIONS (\n        FIELD_TERMINATOR = ',',\n        STRING_DELIMITER = '\"',\n        FIRST_ROW = 2\n    )\n);\nGO\n\n-- Parquet file format for Bronze/Silver layers\nCREATE EXTERNAL FILE FORMAT parquet_format\nWITH (\n    FORMAT_TYPE = PARQUET\n);\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

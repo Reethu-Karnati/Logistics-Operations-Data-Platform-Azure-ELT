@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 32",
+	"properties": {
+		"content": {
+			"query": "CREATE OR ALTER VIEW v_delivery_risk_score AS\nSELECT\n    f.event_id,\n    da.asset_id,\n    dts.traffic_status_name,\n    f.waiting_time,\n    f.asset_utilization,\n    f.user_transaction_amount,\n    \n    -- Traffic-based score\n    CASE \n        WHEN dts.traffic_status_name = 'Heavy' THEN 3\n        WHEN dts.traffic_status_name = 'Detour' THEN 2\n        ELSE 1\n    END AS traffic_score,\n\n    -- Normalized waiting time (0-3 scale)\n    CASE\n        WHEN f.waiting_time >= 40 THEN 3\n        WHEN f.waiting_time >= 35 THEN 2\n        ELSE 1\n    END AS waiting_time_score,\n\n    -- Inverse utilization score (higher utilization → higher risk)\n    CASE\n        WHEN f.asset_utilization >= 82 THEN 3\n        WHEN f.asset_utilization >= 79 THEN 2\n        ELSE 1\n    END AS utilization_score,\n\n    -- Revenue protection score (low revenue → higher risk)\n    CASE\n        WHEN f.user_transaction_amount < 280 THEN 3\n        WHEN f.user_transaction_amount < 300 THEN 2\n        ELSE 1\n    END AS revenue_score,\n\n    -- Final combined risk score\n    (\n        CASE \n            WHEN dts.traffic_status_name = 'Heavy' THEN 3\n            WHEN dts.traffic_status_name = 'Detour' THEN 2\n            ELSE 1\n        END\n        +\n        CASE\n            WHEN f.waiting_time >= 40 THEN 3\n            WHEN f.waiting_time >= 35 THEN 2\n            ELSE 1\n        END\n        +\n        CASE\n            WHEN f.asset_utilization >= 82 THEN 3\n            WHEN f.asset_utilization >= 79 THEN 2\n            ELSE 1\n        END\n        +\n        CASE\n            WHEN f.user_transaction_amount < 280 THEN 3\n            WHEN f.user_transaction_amount < 300 THEN 2\n            ELSE 1\n        END\n    ) AS risk_score\n    \nFROM fact_logistics_events f\nJOIN dim_asset da \n    ON f.asset_key = da.asset_key\nJOIN dim_traffic_status dts\n    ON f.traffic_status_key = dts.traffic_status_key;\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "logistics_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

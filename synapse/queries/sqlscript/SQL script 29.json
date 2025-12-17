@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 29",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP 20 *\nFROM v_asset_traffic_performance\nORDER BY delay_rate DESC, avg_waiting_time DESC;\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "logistics_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
