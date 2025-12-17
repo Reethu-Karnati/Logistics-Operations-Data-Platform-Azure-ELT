@@ -1,3 +1,5 @@
+![Architecture]("C:\Users\REETHU\Downloads\Architecture Diagram.png")
+
 Logistics Operations Data Platform — Azure ELT Project
 
 Azure Synapse Analytics | ADLS Gen2 | Serverless SQL | Managed Identity | ELT Architecture
