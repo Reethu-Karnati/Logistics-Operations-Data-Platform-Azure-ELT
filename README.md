@@ -1,4 +1,4 @@
-![Architecture]("C:\Users\REETHU\Downloads\Architecture Diagram.png")
+![Architecture](https://github.com/Reethu-Karnati/Logistics-Operations-Data-Platform-Azure-ELT/blob/main/architecture/Architecture%20Diagram.png)
 
 Logistics Operations Data Platform — Azure ELT Project
 
