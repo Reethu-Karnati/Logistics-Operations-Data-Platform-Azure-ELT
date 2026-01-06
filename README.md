@@ -111,3 +111,10 @@ Add anomaly detection for asset health monitoring
 
 Reethu Karnati
 Azure Data Engineering | SQL | Cloud Analytics
+
+
+## 📌 Project Status
+
+This project is complete.
+All architecture, SQL logic, and analytical queries are preserved for
+reference, reproducibility, and interview discussion.
