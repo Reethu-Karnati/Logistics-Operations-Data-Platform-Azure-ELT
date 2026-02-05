@@ -37,7 +37,7 @@ Azure RBAC + Managed Identity security
 
 📊 Key Insights from Gold Layer
 
-All insights are generated through SQL models, not BI tools.
+All insights are generated through SQL models.
 
 1. Root Causes of Delays
 
