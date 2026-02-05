@@ -117,4 +117,4 @@ Azure Data Engineering | SQL | Cloud Analytics
 
 This project is complete.
 All architecture, SQL logic, and analytical queries are preserved for
-reference, reproducibility, and interview discussion.
+reference, reproducibility.
